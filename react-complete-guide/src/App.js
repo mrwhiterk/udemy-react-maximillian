@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import Person from './Person/Person'
 import './App.css'
-// import Radium, { StyleRoot } from 'radium'
+
+const StyledButton = styled.button`
+  background-color: ${props => (props.alt ? 'red' : 'green')};
+  color: white;
+  outline: none;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: ${props => (props.alt ? 'salmon' : 'lightgreen')};
+    color: black;
+  }
+`
 
 class App extends Component {
   state = {
@@ -87,11 +101,11 @@ class App extends Component {
           })}
         </div>
       )
-      style.backgroundColor = 'red'
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // style.backgroundColor = 'red'
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
     let classes = []
@@ -108,9 +122,9 @@ class App extends Component {
       <div className="App">
         <h1>Hi from react</h1>
         <p className={classes.join(' ')}>this is working</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
           Toggle people
-        </button>
+        </StyledButton>
         {persons}
       </div>
     )
