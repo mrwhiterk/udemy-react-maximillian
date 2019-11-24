@@ -94,7 +94,7 @@ class App extends Component {
       //   backgroundColor: 'salmon',
       //   color: 'black'
       // }
-      // btnClass.push(classes.Red)
+      btnClass = classes.Red
     }
 
     let assignedClasses = []
