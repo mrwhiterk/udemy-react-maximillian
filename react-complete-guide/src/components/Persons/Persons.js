@@ -1,8 +1,9 @@
 import React from 'react'
 import Person from './Person/Person'
 
-export default props =>
-  props.persons.map((person, i) => {
+export default props => {
+  console.log('[Persons.js] rendering...')
+  return props.persons.map((person, i) => {
     return (
       <Person
         key={person.id}
@@ -13,3 +14,4 @@ export default props =>
       />
     )
   })
+}

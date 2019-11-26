@@ -4,11 +4,13 @@ import React from 'react'
 import classes from './Person.css'
 
 const person = props => {
-  const rnd = Math.random()
+  // const rnd = Math.random()
 
-  if (rnd > 0.997) {
-    throw new Error('Something wrong') 
-  }
+  // if (rnd > 0.997) {
+  //   throw new Error('Something wrong') 
+  // }
+
+  console.log('[person.js] rendering')
 
   return (
 
