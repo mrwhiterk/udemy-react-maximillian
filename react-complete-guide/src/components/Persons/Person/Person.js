@@ -1,27 +1,23 @@
 import React from 'react'
-// import styled from 'styled-components'
-
+import Aux from '../../../hoc/Aux'
 import classes from './Person.css'
 
-const person = props => {
-  // const rnd = Math.random()
-
-  // if (rnd > 0.997) {
-  //   throw new Error('Something wrong') 
-  // }
-
-  console.log('[person.js] rendering')
-
-  return (
-
-    <div className={classes.Person}>
-      <p onClick={props.click}>
-        I'm {props.name} and I am {props.age} years old
-      </p>
-      {props.children}
-      <input type="text" onChange={props.changed} value={props.name} />
-    </div>
-  )
+class Person extends React.Component {
+  render() {
+    return (
+      <Aux>
+        <p onClick={this.props.click}>
+          I'm {this.props.name} and I am {this.props.age} years old
+        </p>
+        {this.props.children}
+        <input
+          type="text"
+          onChange={this.props.changed}
+          value={this.props.name}
+        />
+      </Aux>
+    )
+  }
 }
 
-export default person
+export default Person

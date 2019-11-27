@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 import classes from './App.css'
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
+import WithClass from '../hoc/WithClass'
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     console.log('[App.js] constructor')
-    
   }
 
   state = {
@@ -31,17 +31,20 @@ class App extends Component {
       }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   }
 
   static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDerivedStateFromProps', props)
-    return state;
+    return state
   }
 
   componentDidMount() {
     console.log('[App.js] component did mount')
   }
+
+  
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => person.id === id)
@@ -87,15 +90,20 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
-        <Cockpit
-          title={this.props.appTitle}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons}
-          clicked={this.togglePersonsHandler}
-        />
+      <WithClass classes={classes.App}>
+        <button onClick={() => this.setState({ showCockpit: false })}>
+          Remove Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.appTitle}
+            showPersons={this.state.showPersons}
+            personsLength={this.state.personsLength}
+            clicked={this.togglePersonsHandler}
+          />
+        ) : null}
         {persons}
-      </div>
+      </WithClass>
     )
   }
 }
