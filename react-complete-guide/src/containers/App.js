@@ -18,7 +18,7 @@ class App extends Component {
       {
         id: 'jslkdjaf',
         name: 'max',
-        age: 28
+        age: '28'
       },
       {
         id: 'kjlsdjl',
@@ -33,7 +33,8 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -44,8 +45,6 @@ class App extends Component {
   componentDidMount() {
     console.log('[App.js] component did mount')
   }
-
-  
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => person.id === id)
@@ -59,9 +58,10 @@ class App extends Component {
     const persons = [...this.state.persons]
     persons[personIndex] = person
 
-    this.setState({
-      persons
-    })
+    this.setState((prevState, props) => ({
+      persons,
+      changeCounter: prevState.changeCounter + 1
+    }))
   }
 
   deletePersonHandler = personIndex => {
