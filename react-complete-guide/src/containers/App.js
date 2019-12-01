@@ -18,7 +18,7 @@ class App extends Component {
       {
         id: 'jslkdjaf',
         name: 'max',
-        age: '28'
+        age: 28
       },
       {
         id: 'kjlsdjl',
