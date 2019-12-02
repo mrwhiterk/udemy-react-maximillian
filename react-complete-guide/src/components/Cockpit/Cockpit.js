@@ -13,9 +13,6 @@ const cockpit = props => {
   useEffect(() => {
     console.log('[cockpit.js] useEffect')
 
-    // setTimeout(() => {
-    // alert('saved data')
-    // }, 1000)
     toggleBtnRef.current.click()
     return () => {
       console.log('[cockpit.js] cleanup work')
