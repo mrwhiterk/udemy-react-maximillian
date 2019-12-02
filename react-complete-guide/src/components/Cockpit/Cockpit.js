@@ -2,16 +2,16 @@ import React, { useEffect, useRef } from 'react'
 
 import classes from './Cockpit.css'
 
-const cockpit = props => {
+import AuthContext from '../../context/auth-context'
 
+const cockpit = props => {
   const toggleBtnRef = useRef(null)
-   
 
   useEffect(() => {
     console.log('[cockpit.js] useEffect')
 
     // setTimeout(() => {
-      // alert('saved data')
+    // alert('saved data')
     // }, 1000)
     toggleBtnRef.current.click()
     return () => {
@@ -49,7 +49,9 @@ const cockpit = props => {
       <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle people
       </button>
-      <button onClick={props.login}>log in</button>
+      <AuthContext.Consumer>
+        {context => <button onClick={context.login}>log in</button>}
+      </AuthContext.Consumer>
     </div>
   )
 }

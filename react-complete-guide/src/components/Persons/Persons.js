@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import Person from './Person/Person'
 
+
 class Persons extends PureComponent {
   // static getDerivedStateFromProps(props, state) {
   //   console.log(' get derived state from props')
@@ -47,7 +48,7 @@ class Persons extends PureComponent {
           age={person.age}
           key={person.id}
           changed={e => this.props.changed(e, person.id)}
-          isAuth={this.props.isAuthenticated}
+
         />
       )
     })
