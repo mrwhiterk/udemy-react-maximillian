@@ -18,7 +18,7 @@ class NewPost extends Component {
     }
     try {
       let res = await axios.post(
-        'https://jsonplaceholder.typicode.com/posts/',
+        '/posts',
         post
       )
       console.log(res)
