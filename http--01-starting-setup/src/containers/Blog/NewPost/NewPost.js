@@ -28,7 +28,9 @@ class NewPost extends Component {
         post
       )
       console.log(res)
-      this.setState({ submitted: true })
+      // this.props.history.replace('/posts') // replaces page on stack
+      this.props.history.push('/posts') // adds new page on stack
+      // this.setState({ submitted: true })
     } catch (err) {
       console.log(err)
     }
