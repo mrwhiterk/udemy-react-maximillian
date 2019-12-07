@@ -1,0 +1,22 @@
+.nav {
+ display: flex;
+ width: 20%;
+ margin: 0 auto;
+ padding: 0;
+ justify-content: space-around;
+}
+
+.nav li {
+  list-style: none;
+  padding: 5px;
+}
+
+.nav li a {
+  text-decoration: none;
+  /* color: black; */
+  font-size: 1.5em;
+}
+
+.active {
+  color: #fac123;
+}
