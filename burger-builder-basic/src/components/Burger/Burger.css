@@ -24,7 +24,9 @@
 
 @media (min-width: 1000px) and (min-height: 700px) {
   .Burger {
-    width: 700px;
-    height: 600px;
+    /* width: 700px; max's way -> changed cause to big in order summary*/
+    width: 500px; 
+    /* height: 600px; */
+    height: 450px;
   }
 }

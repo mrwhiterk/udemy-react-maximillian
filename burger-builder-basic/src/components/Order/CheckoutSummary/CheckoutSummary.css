@@ -2,6 +2,12 @@
   text-align: center;
   width: 80%;
   margin: auto;
+  box-sizing: border-box;
+}
+
+.MyCheckoutSummaryBurger {
+  width: 100%;
+  margin: auto;
 }
 
 @media (min-width: 600px) {
