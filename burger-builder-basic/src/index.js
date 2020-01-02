@@ -8,6 +8,17 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './store/reducer'
 
+const logger = (store) => {
+  return next => {
+    return action => {
+      console.log('[middleware] dispatching', action)
+      const result = next(action)
+      console.log('[middleware] next state', store.getState());
+      return result;
+    }
+  }
+}
+
 const store = createStore(reducer)
 
 const app = (
