@@ -115,13 +115,13 @@ class ContactData extends Component {
       orderData: formData
     }
 
-    axios
-      .post('/orders.json', order)
-      .then(res => {
-        this.setState({ loading: false })
-        this.props.history.push('/')
-      })
-      .catch(err => this.setState({ loading: false }))
+    // axios
+    //   .post('/orders.json', order)
+    //   .then(res => {
+    //     this.setState({ loading: false })
+    //     this.props.history.push('/')
+    //   })
+    //   .catch(err => this.setState({ loading: false }))
   }
 
   checkValidity(value, rules) {
