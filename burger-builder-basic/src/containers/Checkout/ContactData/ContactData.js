@@ -98,8 +98,7 @@ class ContactData extends Component {
         valid: true
       }
     },
-    formIsValid: false,
-    loading: false
+    formIsValid: false
   }
 
   orderHandler = event => {
@@ -117,7 +116,6 @@ class ContactData extends Component {
       orderData: formData
     }
     this.props.onOrderBurger(order)
-
   }
 
   checkValidity(value, rules) {
@@ -151,10 +149,10 @@ class ContactData extends Component {
       updatedFormElement.value,
       updatedFormElement.validation
     )
-    updatedFormElement.touched = true;
+    updatedFormElement.touched = true
     updatedOrderForm[inputIdentifier] = updatedFormElement
 
-    let formIsValid = true;
+    let formIsValid = true
     for (let inputIdentifier in updatedOrderForm) {
       formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
     }
@@ -185,10 +183,12 @@ class ContactData extends Component {
           />
         ))}
 
-        <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
+        <Button btnType="Success" disabled={!this.state.formIsValid}>
+          ORDER
+        </Button>
       </form>
     )
-    if (this.state.loading) {
+    if (this.props.loading) {
       form = <Spinner />
     }
 
@@ -204,12 +204,15 @@ class ContactData extends Component {
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    price: state.total
+    price: state.total,
+    loading: state.loading
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+  return {
+    onOrderBurger: orderData => dispatch(actions.purchaseBurger(orderData))
+  }
 }
 
-export default connect(mapStateToProps)(withErrorHandler(ContactData, axios))
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios))
