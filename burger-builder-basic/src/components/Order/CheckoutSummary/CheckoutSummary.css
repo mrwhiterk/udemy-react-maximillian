@@ -2,16 +2,16 @@
   text-align: center;
   width: 80%;
   margin: auto;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
-.MyCheckoutSummaryBurger {
+/* .MyCheckoutSummaryBurger {
   width: 100%;
   margin: auto;
-}
+} */
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .CheckoutSummary {
     width: 500px;
   }
-}
+} */
