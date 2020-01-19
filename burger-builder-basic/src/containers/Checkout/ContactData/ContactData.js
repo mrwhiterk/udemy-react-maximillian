@@ -8,6 +8,7 @@ import axios from '../../../axios-orders'
 import Input from '../../../components/UI/Input/Input'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 import * as actions from '../../../store/actions/index'
+import { updateObject } from '../../../shared/utility'
 
 class ContactData extends Component {
   state = {
@@ -115,7 +116,6 @@ class ContactData extends Component {
       price: this.props.price,
       orderData: formData,
       userId: this.props.userId
-      
     }
     this.props.onOrderBurger(order, this.props.token)
   }
@@ -139,20 +139,23 @@ class ContactData extends Component {
   }
 
   inputChangedHandler = (e, inputIdentifier) => {
-    const updatedOrderForm = {
-      ...this.state.orderForm
-    }
-    // deep clone object
-    const updatedFormElement = {
-      ...updatedOrderForm[inputIdentifier]
-    }
-    updatedFormElement.value = e.target.value
-    updatedFormElement.valid = this.checkValidity(
-      updatedFormElement.value,
-      updatedFormElement.validation
+    
+
+    const updatedFormElement = updateObject(
+      this.state.orderForm[inputIdentifier],
+      {
+        value: e.target.value,
+        valid: this.checkValidity(
+          e.target.value,
+          this.state.orderForm[inputIdentifier].validation
+        ),
+        touched: true
+      }
     )
-    updatedFormElement.touched = true
-    updatedOrderForm[inputIdentifier] = updatedFormElement
+
+    const updatedOrderForm = updateObject(this.state.orderForm, {
+      [inputIdentifier]: updatedFormElement
+    })
 
     let formIsValid = true
     for (let inputIdentifier in updatedOrderForm) {
@@ -215,8 +218,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
+    onOrderBurger: (orderData, token) =>
+      dispatch(actions.purchaseBurger(orderData, token))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(ContactData, axios))
