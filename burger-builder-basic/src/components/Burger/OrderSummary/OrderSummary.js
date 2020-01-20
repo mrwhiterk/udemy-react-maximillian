@@ -12,7 +12,6 @@ class OrderSummary extends Component {
         </li>
       )
     })
-    // <li>salad: 1</li>
 
     return (
       <Aux>
