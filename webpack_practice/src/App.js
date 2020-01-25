@@ -22,6 +22,7 @@ class App extends Component {
           <Route path="/" exact Component={Users} />
           <Route path="/pizza" exact Component={AsyncPizza} />
 
+
           
         </div>
       </div>
