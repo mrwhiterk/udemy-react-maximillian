@@ -28,6 +28,10 @@ function Ingredients() {
     console.log("Rendering ingredients", userIngredients);
   }, [userIngredients]);
 
+  const filteredIngredientHandler = filteredIng => {
+    setUserIngredients(filteredIng)
+  }
+
   const addIngredientHandler = (ingredient) => {
     fetch(env.firebaseURI, {
       method: "POST",
@@ -56,7 +60,7 @@ function Ingredients() {
       <IngredientForm onAddIngredient={addIngredientHandler} />
 
       <section>
-        <Search />
+        <Search onLoadIngredients={filteredIngredientHandler}/>
         <IngredientList
           ingredients={userIngredients}
           onRemoveItem={removeIngredientHandler}
