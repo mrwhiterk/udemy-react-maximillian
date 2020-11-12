@@ -43,8 +43,9 @@ class App extends Component {
           <Route path="/auth" component={asyncAuth} />
           <Route path="/" exact component={BurgerBuilder} />
           <Redirect to="/" />
+          {console.log(process.env.REACT_APP_AUTH_API_KEY)}
         </Switch>
-      )
+      );
     }
 
     return (

@@ -24,6 +24,8 @@ export function* authUserSaga(action) {
     returnSecureToken: true
   }
 
+  console.log(process.env.REACT_APP_AUTH_API_KEY);
+
   let url =
     'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
     process.env.REACT_APP_AUTH_API_KEY

@@ -107,6 +107,10 @@ class Auth extends Component {
       />
     ))
 
+    {
+      console.log(process.env.REACT_APP_AUTH_API_KEY);
+    }
+
     if (this.props.loading) {
       form = <Spinner />
     }

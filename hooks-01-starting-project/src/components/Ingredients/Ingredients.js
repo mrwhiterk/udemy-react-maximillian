@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import IngredientForm from "./IngredientForm";
 import IngredientList from "./IngredientList";
@@ -7,6 +7,26 @@ import env from "../../config.json";
 
 function Ingredients() {
   const [userIngredients, setUserIngredients] = useState([]);
+
+  useEffect(() => {
+    fetch(env.firebaseURI)
+      .then((res) => res.json())
+      .then((resData) => {
+        const loadedIngredients = [];
+        for (const key in resData) {
+          loadedIngredients.push({
+            id: key,
+            title: resData[key].title,
+            amount: resData[key].amount,
+          });
+        }
+        setUserIngredients(loadedIngredients);
+      });
+   }, []);
+
+  useEffect(() => {
+    console.log("Rendering ingredients", userIngredients);
+  }, [userIngredients]);
 
   const addIngredientHandler = (ingredient) => {
     fetch(env.firebaseURI, {
